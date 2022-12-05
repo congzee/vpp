@@ -14,6 +14,7 @@
 cmake_minimum_required(VERSION 3.10)
 
 set(CMAKE_C_COMPILER_NAMES clang-11 clang-10 clang-9 gcc-10 gcc-9 cc)
+set(CLIB_DEBUG "2")
 
 project(vpp C)
 
@@ -80,7 +81,7 @@ string(CONCAT CMAKE_EXE_LINKER_FLAGS_RELEASE "-pie")
 list(APPEND BUILD_TYPES "debug")
 string(CONCAT CMAKE_C_FLAGS_DEBUG
   "-O0 "
-  "-DCLIB_DEBUG "
+  "-DCLIB_DEBUG=2 "
   "-fstack-protector "
   "-DFORTIFY_SOURCE=2 "
   "-fno-common "
@@ -94,7 +95,7 @@ string(CONCAT CMAKE_C_FLAGS_COVERITY "-O2 -D__COVERITY__")
 list(APPEND BUILD_TYPES "gcov")
 string(CONCAT CMAKE_C_FLAGS_GCOV
   "-O0 "
-  "-DCLIB_DEBUG "
+  "-DCLIB_DEBUG=2 "
   "-DCLIB_GCOV "
   "-fprofile-arcs "
   "-ftest-coverage ")
